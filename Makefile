@@ -9,7 +9,7 @@ LD = -lm
 all: explicitSeq explicitPar
 
 explicitSeq : explicitSeq.o explUtilSeq.o
-	$(CC) $(LD) -o $@ explicitSeq.o explUtilSeq.o
+	$(CC) -o $@ explicitSeq.o explUtilSeq.o $(LD)
 
 explicitSeq.o : explicitSeq.c 
 	$(CC) -c $(*F).c
@@ -18,7 +18,7 @@ explUtilSeq.o : explUtilSeq.c
 	$(CC) -c $(*F).c
 		
 explicitPar : explicitPar.o explUtilPar.o updateBound.o readParam.o
-	$(MPI_CC) $(LD) -o $@ explicitPar.o explUtilPar.o updateBound.o readParam.o 
+	$(MPI_CC) -o $@ explicitPar.o explUtilPar.o updateBound.o readParam.o $(LD)
 
 .c.o :
 	$(MPI_CC) -c $(*F).c
